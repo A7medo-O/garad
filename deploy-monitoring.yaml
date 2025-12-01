@@ -1,7 +1,7 @@
 ---
-- hosts: master
+- name: Deploy monitoring on master
+  hosts: master
   become: yes
   roles:
     - helm
     - grafana
-

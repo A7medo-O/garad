@@ -1,5 +1,5 @@
 ---
-- name: Deploy monitoring on master
+- name: Deploy monitoring stack
   hosts: master
   become: yes
   roles:

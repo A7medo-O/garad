@@ -1,2 +1,54 @@
+# ---
+# - name: Create ConfigMap for Node Dashboard
+#   kubernetes.core.k8s:
+#     state: present
+#     definition:
+#       apiVersion: v1
+#       kind: ConfigMap
+#       metadata:
+#         name: node-dashboard
+#         namespace: monitoring
+#       data:
+#         node-dashboard.json: "{{ lookup('file', 'roles/grafana/files/node-dashboard.json') }}"
+
+# - name: Create ConfigMap for Pod Dashboard
+#   kubernetes.core.k8s:
+#     state: present
+#     definition:
+#       apiVersion: v1
+#       kind: ConfigMap
+#       metadata:
+#         name: pod-dashboard
+#         namespace: monitoring
+#       data:
+#         pod-dashboard.json: "{{ lookup('file', 'roles/grafana/files/pod-dashboard.json') }}"
+
+# #tasks file for roles/grafana
 ---
-# tasks file for roles/grafana
+- name: Create ConfigMap for Node Dashboard
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: node-dashboard
+        namespace: monitoring
+      data:
+        node-dashboard.json: "{{ lookup('file', 'roles/grafana/files/node-dashboard.json') }}"
+
+- name: Create ConfigMap for Pod Dashboard
+  kubernetes.core.k8s:
+    state: present
+    definition:
+      apiVersion: v1
+      kind: ConfigMap
+      metadata:
+        name: pod-dashboard
+        namespace: monitoring
+      data:
+        pod-dashboard.json: "{{ lookup('file', 'roles/grafana/files/pod-dashboard.json') }}"
+
+#tasks file for roles/grafana
+
+
